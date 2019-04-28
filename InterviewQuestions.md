@@ -15,19 +15,21 @@ Event bubbling provides the foundation for event delegation in browsers. When yo
 
 Example:
 
-<!-- <ul onclick="alert(event.type + "!")">
+```javascript
+// HTML
+<ul onclick="alert(event.type + "!")">
     <li>One</li>
     <li>Two</li>
     <li>Three</li>
 </ul>
 
-JS:
+// JS
 function toggleDone(event) {
     if (!event.target.matches(`input`)) return
     console.log(event.target)
     // manipulate node here
 }
- -->
+```
 
 Less event bindings
 Reduced memory
@@ -63,13 +65,15 @@ So, closure can happen in functions and objects. Basically, it's another functio
 
 How to use it:
 
-<!-- function outer() {
-    var x = 2;
-    function inner() {
-        x = 4;
-    }
-    console.log(x) // prints out 4
-} -->
+```javascript
+function outer() {
+  var x = 2;
+  function inner() {
+    x = 4;
+  }
+  console.log(x); // prints out 4
+}
+```
 
 Why use closure?
 
@@ -79,32 +83,41 @@ It helps to make private/public scope for functions or objects. Also, variables 
 
 To iterate through object properties:
 
-<!-- for (var property in object) {
-    if (object.hasOwnProperty(property)) {
-        // code goes here...
-    }
-} -->
+```javascript
+for (var property in object) {
+  if (object.hasOwnProperty(property)) {
+    // code goes here...
+  }
+}
+```
 
 To iterate throug array items:
 One way is to do :
 
-<!-- for (let i = 0; i < array.length; i++) {
-    console.log(array[i]);
-} -->
+```javascript
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
+```
 
 Or
 
-<!-- myArray.forEach(function(s) {
-    // do smth with s here...
-}) -->
+```javascript
+myArray.forEach(function(s) {
+  // do smth with s here...
+});
+```
 
 Other way is to (ES6):
 
-<!-- var s, myArray = ["Hello", "World"];
+```javascript
+var s,
+  myArray = ["Hello", "World"];
 
 for (s of myArray) {
-    // do something with s here
-} -->
+  // do something with s here
+}
+```
 
 ## Can you describe the main difference between the Array.forEach() loop and Array.map() methods and why you would pick one versus the other?
 
@@ -152,9 +165,11 @@ It's also great for reusing methods.
 
 Feature Detection - a way to determine if a feature exists in certain browsers. An example is a location feature in modern HTML5
 
-<!-- if (navigator.geolocation) {
-    // detect user location
-} -->
+```javascript
+if (navigator.geolocation) {
+  // detect user location
+}
+```
 
 Feature Inference - when you determined that a feature exists and assumed the next web technology feature you are implementing into your app exists as well. It's bad practice to assume so better explicitly specify features you want to detect and plan a fallback action.
 
@@ -211,7 +226,9 @@ Unary accepts one parameter
 Binary accepts two parameters
 Ternary accepts three parameters.
 
-<!-- var shineSun = is_sunny ? "yes" : "no"; -->
+```javascript
+var shineSun = is_sunny ? "yes" : "no";
+```
 
 Ternary is an operator that takes 3 arguments and defines a conditional expression. One line shorthand for an if else statement.
 
@@ -335,8 +352,10 @@ Let can be re-assigned, but const is read-only which means once initialised you 
 
 Example, if you have an array of values that you want to transform, array function is perfect.
 
-<!-- const array = ["word", "nextWord"];
-const lowerCaseWords = array.map(item => item.toLowerCase()); -->
+```javascript
+const array = ["word", "nextWord"];
+const lowerCaseWords = array.map(item => item.toLowerCase());
+```
 
 It's simpler to write, takes less space writing the code therefore takes less memory than regular function declarations.
 
@@ -356,31 +375,40 @@ Destructuring allows to extract properties from an object or item from an array
 
 If you have an object person
 
-<!-- const person = {
-    first: "John",
-    last: "Biern"
-} -->
+```javascript
+const person = {
+  first: "John",
+  last: "Biern"
+};
+```
 
 and if you need to extract data
 
-<!-- const first = person.first;
-const last = person.last; -->
+```javascript
+const first = person.first;
+const last = person.last;
+```
 
 It's an issue because it's repetative.
 
 Using destruction you can do the same thing in less amount of lines
 
-<!-- const { first, last } = person; -->
+```javascript
+const { first, last } = person;
+```
 
 For arrays, if you have an array of countries
 
-<!--
-const countries = ["UK", "Australia", "USA", "China"] -->
+```javascript
+const countries = ["UK", "Australia", "USA", "China"];
+```
 
 Using destructuring to extract some of the data, you would do:
 
-<!-- const [firstCountry, secondCountry, , fourthCountry] = countries;
-// returns UK, Australia and China. -->
+```javascript
+const [firstCountry, secondCountry, , fourthCountry] = countries;
+// returns UK, Australia and China.
+```
 
 ## Can you give an example of generating a string with ES6 Template Literals?
 
@@ -388,9 +416,10 @@ Template literals are an additional way to create and handle dynamic strings/str
 
 To generate a string, you would use:
 
-<!--
+```javascript
 let myVar = "I am a variable in the code";
-let myString = `Hi, I am a string. I can use other variables from my code and show them to you ${myVar}` -->
+let myString = `Hi, I am a string. I can use other variables from my code and show them to you ${myVar}`;
+```
 
 You can write code in the \${} inside the `` instead of concatenating strings, etc...
 
@@ -400,11 +429,15 @@ Currying is operatoin taking a function, which accepts multiple arguments at onc
 
 SO an example of currying is:
 
+```javascript
 const sum = x => y => z => x + y + z;
+```
 
 To use it
 
-sum (3)(2)(1) // produces 6
+```javascript
+sum(3)(2)(1); // produces 6
+```
 
 Advantages:
 
@@ -417,20 +450,26 @@ Spread syntax allows an iterable such as an array or string ot be expanded in pl
 
 Let's say we have two arrays:
 
-<!-- const array1 = [1,2,3]
-const array2 = [4,5,6,7] -->
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6, 7];
+```
 
 Using spread syntax we can combine both of them
 
-<!-- const array3 = [...array1, ...array2]; -->
+```javascript
+const array3 = [...array1, ...array2];
+```
 
 Benefit of using it is that is significantly faster than for example concat operation. Especially for large operations.
 
 It's different from rest syntax because spread syntax copies all the values of already defined array(s) whereas rest syntax is used when we need to retrieve all REMAINING elements after a destructuring operation.
 
-<!-- const [first, second, ...rest] = array1
+```javascript
+const [first, second, ...rest] = array1;
 // first = 1, second = 2 and third = 3
-// ...rest = third = 3 -->
+// ...rest = third = 3
+```
 
 ## How can you share code between files?
 
@@ -438,22 +477,26 @@ It's different from rest syntax because spread syntax copies all the values of a
 
 exporting:
 
-<!-- // mathExpresions.js
+```javascript
+// mathExpresions.js
 module.exports = function() {
-    return {
-        add: function(num1, num2) {
-            return add(num1, num2);
-        },
-        substract: function(num1, num2) {
-            return substract(num1, num2);
-        }
+  return {
+    add: function(num1, num2) {
+      return add(num1, num2);
+    },
+    substract: function(num1, num2) {
+      return substract(num1, num2);
     }
-} -->
+  };
+};
+```
 
 importing using Harmony:
 
-<!-- // newFile.js
-var { add, substract } = require("./mathExpressions"); -->
+```javascript
+// newFile.js
+var { add, substract } = require("./mathExpressions");
+```
 
 Using modules makes the code more modular and easily reusable while keeping global scope clean.
 
@@ -462,24 +505,28 @@ Using modules makes the code more modular and easily reusable while keeping glob
 Static methods are called on the class itself rather than on its instances.
 You might want to use them for such things as utility methods for example functions to create or clone objects.
 
-<!-- class StaticMethodCall {
-    static staticMethod() {
-        return "Static method has been called";
-    }
+```javascript
+class StaticMethodCall {
+  static staticMethod() {
+    return "Static method has been called";
+  }
 }
 
-StaticMethodCall.staticMethod(); // "Static method has been called"; -->
+StaticMethodCall.staticMethod(); // "Static method has been called";
+```
 
 To call it from class constructor
 
-<!-- class StaticMethodCall {
-    constructor() {
-        console.log(StaticMethodCall.staticMethod()) // "static method has been called"
+```javascript
+class StaticMethodCall {
+  constructor() {
+    console.log(StaticMethodCall.staticMethod()); // "static method has been called"
 
-        console.log(this.constructor.staticMethod()) // "static method has been called"
-    }
+    console.log(this.constructor.staticMethod()); // "static method has been called"
+  }
 
-    static staticmethod() {
-        return "static method has been called";
-    }
-} -->
+  static staticmethod() {
+    return "static method has been called";
+  }
+}
+```
